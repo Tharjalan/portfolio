@@ -55,7 +55,7 @@
                     <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
                     <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
                     <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
-                    <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
+                    <li><a href="#blog"><i class="bx bx-server"></i> Blog</a></li>
                     <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
 
                 </ul>
@@ -70,6 +70,13 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
         <div class="hero-container" data-aos="fade-in">
+            <!-- count particles -->
+            <div class="count-particles">
+                <span class="js-count-particles">--</span> particles
+            </div>
+
+            <!-- particles.js container -->
+            <div id="particles-js"></div>
             <h1>Tharjalan Jeyaradnam</h1>
             <p>I'm <span class="typed" data-typed-items="Security Researcher , Developer, Freelancer, Blogger"></span></p>
         </div>
@@ -679,10 +686,31 @@
     <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="assets/vendor/typed.js/typed.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
-
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/particles.min.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
 </body>
 
 </html>
+
+<script>
+    var count_particles, stats, update;
+    stats = new Stats;
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function() {
+        stats.begin();
+        stats.end();
+        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+        }
+        requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+</script>
